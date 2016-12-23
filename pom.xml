@@ -8,11 +8,10 @@
     <artifactId>JavaLearnSimple</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
-
     <!-- 共用配置结果 -->
     <properties>
         <testng_version>6.9.13.6</testng_version>
-        <nettty_version>5.0.0.Alpha2</nettty_version>
+        <nettty_version>4.0.28.Final</nettty_version>
     </properties>
     <dependencyManagement>
         <dependencies>
