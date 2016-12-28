@@ -1,4 +1,4 @@
-package org.zdlearn.java.simple.nettyrpc;
+package org.zdlearn.java.simple.zoa.domain.consumer;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelInitializer;
@@ -9,16 +9,15 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.serialization.ClassResolvers;
 import io.netty.handler.codec.serialization.ObjectDecoder;
 import io.netty.handler.codec.serialization.ObjectEncoder;
-import org.zdlearn.java.simple.zoa.domain.consumer.ZOAClientHandler;
 
 /**
  * Created by wyzhangdong on 2016/12/23.
  */
-public class ObjectClient {
+public class ZOAClient {
     private String host;
     private int port;
-    public ObjectClient(){}
-    public ObjectClient(String host,int port){
+    public ZOAClient(){}
+    public ZOAClient(String host, int port){
         this.host=host;
         this.port=port;
     }
@@ -28,7 +27,7 @@ public class ObjectClient {
         try{
             clientBootstrap.group(workGroup).channel(NioSocketChannel.class).handler(new ChannelInitializer<SocketChannel>() {
                 protected void initChannel(SocketChannel socketChannel) throws Exception {
-                    socketChannel.pipeline().addLast(new ObjectEncoder(),new ObjectDecoder(ClassResolvers.cacheDisabled(null)),new ObjectClientHandler());
+                    socketChannel.pipeline().addLast(new ObjectEncoder(),new ObjectDecoder(ClassResolvers.cacheDisabled(null)),new ZOAClientHandler());
                 }
             });
             clientBootstrap.connect(host,port).sync().channel().closeFuture().sync();
@@ -40,6 +39,6 @@ public class ObjectClient {
     }
 
     public static void main(String [] args){
-        new ObjectClient("localhost",9500).run();;
+        new ZOAClient("localhost",9500).run();;
     }
 }

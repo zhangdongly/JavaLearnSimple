@@ -1,4 +1,4 @@
-package org.zdlearn.java.simple.nettyrpc;
+package org.zdlearn.java.simple.zoa.domain;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelInitializer;
@@ -10,15 +10,26 @@ import io.netty.handler.codec.serialization.ClassResolvers;
 import io.netty.handler.codec.serialization.ObjectDecoder;
 import io.netty.handler.codec.serialization.ObjectEncoder;
 
-
 /**
- * Created by wyzhangdong on 2016/12/23.
+ * <p>项目名称：ZOA</p>
+ * <p>包名称：  org.zdlearn.java.simple.zoa.domain</p>
+ * <p>类名称：  ZOAServer</p>
+ * <p>类描述：  //类职责详细说明</p>
+ * <p>创建人：  wyzhangdong</p>
+ * <p>创建日期：2016/12/28 </p>
+ * <p>修改人:</p>
+ * <p>修改日期</p>
+ * <p>修改备注</p>
+ * <p>@version V1.0 </p>
+ * <p>@author wyzhangdong</p>
+ * <p>@see</p>
  */
-public class ObjectServer {
+public class ZOAServer {
+
     private String host;
     private int port;
-    public ObjectServer(){}
-    public ObjectServer(String host,int port){
+    public ZOAServer(){}
+    public ZOAServer(String host,int port){
         this.port=port;
         this.host=host;
     }
@@ -31,7 +42,7 @@ public class ObjectServer {
             bootstrap.group(bossGroup,workerGroup).channel(NioServerSocketChannel.class);
             bootstrap.childHandler(new ChannelInitializer<SocketChannel>() {
                 protected void initChannel(SocketChannel socketChannel) throws Exception {
-                       socketChannel.pipeline().addLast(new ObjectEncoder(),new ObjectDecoder(ClassResolvers.cacheDisabled(null)),new ObjectServerHandler());
+                    socketChannel.pipeline().addLast(new ObjectEncoder(),new ObjectDecoder(ClassResolvers.cacheDisabled(null)),new ZOAServerHandler());
                 }
             });
             bootstrap.bind(port).sync().channel().closeFuture().sync() ;
@@ -44,9 +55,6 @@ public class ObjectServer {
     }
 
     public static void main(String [] args){
-        new ObjectServer("localhost",9500).run();
+        new ZOAServer("localhost",9500).run();
     }
-
-
-
 }
