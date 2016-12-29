@@ -1,4 +1,4 @@
-package org.zdlearn.java.simple.zoa.domain.api;/**
+package org.zdlearn.java.simple.zoa.api;/**
  * 软件版权：京东金融
  * 系统名称：JavaLearnSimple
  * 文件名称：HellowordApi
@@ -8,7 +8,7 @@ package org.zdlearn.java.simple.zoa.domain.api;/**
 
 /**
  * <p>项目名称：ZOA</p>
- * <p>包名称：  org.zdlearn.java.simple.zoa.domain.api</p>
+ * <p>包名称：  org.zdlearn.java.simple.zoa.api</p>
  * <p>接口名称: HellowordApi</p>
  * <p>类描述：  //类职责详细说明</p>
  * <p>创建人：  wyzhangdong</p>

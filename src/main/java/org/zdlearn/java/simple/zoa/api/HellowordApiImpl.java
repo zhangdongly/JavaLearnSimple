@@ -1,6 +1,4 @@
-package org.zdlearn.java.simple.zoa.domain.api;
-
-import org.zdlearn.java.simple.zoa.domain.api.HellowordApi;
+package org.zdlearn.java.simple.zoa.api;
 
 /**
  * <p>项目名称：ZOA</p>
