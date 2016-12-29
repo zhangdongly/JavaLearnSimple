@@ -1,11 +1,11 @@
-package org.zdlearn.java.simple.zoa.domain.provider;
+package org.zdlearn.java.simple.zoa.domain.api;
 
 import org.zdlearn.java.simple.zoa.domain.api.HellowordApi;
 
 /**
  * <p>项目名称：ZOA</p>
  * <p>包名称：  org.zdlearn.java.simple.zoa.domain.provider</p>
- * <p>类名称：  HellowordImpl</p>
+ * <p>类名称：  HellowordApiImpl</p>
  * <p>类描述：  //类职责详细说明</p>
  * <p>创建人：  wyzhangdong</p>
  * <p>创建日期：2016/12/28 </p>
@@ -16,7 +16,7 @@ import org.zdlearn.java.simple.zoa.domain.api.HellowordApi;
  * <p>@author wyzhangdong</p>
  * <p>@see</p>
  */
-public class HellowordImpl implements HellowordApi {
+public class HellowordApiImpl implements HellowordApi {
 
     public String helloWord(String request) {
         return "Hello word "+request;

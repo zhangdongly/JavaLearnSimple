@@ -10,14 +10,18 @@ import org.zdlearn.java.simple.zoa.domain.ZOAContext;
  */
 public class ZOAClientHandler extends ChannelInboundHandlerAdapter {
 
+    private ZOAContext context;
+
+    public ZOAClientHandler(){}
+
+    public ZOAClientHandler(ZOAContext context){
+       this.context=context;
+    }
+
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         // Send the message to Server
         super.channelActive(ctx);
-
-        ZOAContext context=new ZOAContext();
-        context.setInterfaceName("org.zdlearn.java.simple.zoa.domain.provider.HellowordImpl");
-        context.setMethodName("helloWord");
         ctx.writeAndFlush(context);
     }
 
@@ -27,7 +31,7 @@ public class ZOAClientHandler extends ChannelInboundHandlerAdapter {
 
         ZOAContext context=(ZOAContext) msg;
 
-      System.out.println("调用结果为："+((ZOAContext) msg).getResultJson());
+      System.out.println("调用结果为："+((ZOAContext) msg).getResult());
         ctx.close();
     }
 

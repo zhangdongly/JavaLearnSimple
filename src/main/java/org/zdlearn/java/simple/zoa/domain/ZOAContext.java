@@ -1,6 +1,7 @@
 package org.zdlearn.java.simple.zoa.domain;
 
 import java.io.Serializable;
+import java.lang.reflect.Type;
 
 /**
  * <p>项目名称：ZOA</p>
@@ -34,12 +35,14 @@ public class ZOAContext implements Serializable {
     /**
      * 请求参数
      */
-    public String requestParamJson;
+    Object[] params;
 
     /**
-     * 返回结果
+     * 返回结果类型
      */
-    public String resultJson;
+    Type resultType;
+
+    Object result ;
 
     public String getInterfaceName() {
         return interfaceName;
@@ -65,19 +68,27 @@ public class ZOAContext implements Serializable {
         this.resultCode = resultCode;
     }
 
-    public String getRequestParamJson() {
-        return requestParamJson;
+    public Object[] getParams() {
+        return params;
     }
 
-    public void setRequestParamJson(String requestParamJson) {
-        this.requestParamJson = requestParamJson;
+    public void setParams(Object[] params) {
+        this.params = params;
     }
 
-    public String getResultJson() {
-        return resultJson;
+    public Type getResultType() {
+        return resultType;
     }
 
-    public void setResultJson(String resultJson) {
-        this.resultJson = resultJson;
+    public void setResultType(Type resultType) {
+        this.resultType = resultType;
+    }
+
+    public Object getResult() {
+        return result;
+    }
+
+    public void setResult(Object result) {
+        this.result = result;
     }
 }

@@ -9,6 +9,7 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.serialization.ClassResolvers;
 import io.netty.handler.codec.serialization.ObjectDecoder;
 import io.netty.handler.codec.serialization.ObjectEncoder;
+import org.zdlearn.java.simple.zoa.domain.ZOAContext;
 
 /**
  * Created by wyzhangdong on 2016/12/23.
@@ -16,10 +17,12 @@ import io.netty.handler.codec.serialization.ObjectEncoder;
 public class ZOAClient {
     private String host;
     private int port;
+    private ZOAContext zoaContext;
     public ZOAClient(){}
-    public ZOAClient(String host, int port){
+    public ZOAClient(String host, int port, ZOAContext zoaContext){
         this.host=host;
         this.port=port;
+        this.zoaContext=zoaContext;
     }
     public void run(){
         EventLoopGroup workGroup=new NioEventLoopGroup();
@@ -27,7 +30,7 @@ public class ZOAClient {
         try{
             clientBootstrap.group(workGroup).channel(NioSocketChannel.class).handler(new ChannelInitializer<SocketChannel>() {
                 protected void initChannel(SocketChannel socketChannel) throws Exception {
-                    socketChannel.pipeline().addLast(new ObjectEncoder(),new ObjectDecoder(ClassResolvers.cacheDisabled(null)),new ZOAClientHandler());
+                    socketChannel.pipeline().addLast(new ObjectEncoder(),new ObjectDecoder(ClassResolvers.cacheDisabled(null)),new ZOAClientHandler(zoaContext));
                 }
             });
             clientBootstrap.connect(host,port).sync().channel().closeFuture().sync();
@@ -39,6 +42,6 @@ public class ZOAClient {
     }
 
     public static void main(String [] args){
-        new ZOAClient("localhost",9500).run();;
+        new ZOAClient("localhost",9500,null).run();;
     }
 }

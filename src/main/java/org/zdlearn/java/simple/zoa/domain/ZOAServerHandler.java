@@ -25,12 +25,12 @@ public class ZOAServerHandler extends ChannelInboundHandlerAdapter {
             throws Exception {
 
         ZOAContext context =(ZOAContext)msg;
-        Object in=Class.forName(context.getInterfaceName()).newInstance();
+        Object in=Class.forName(context.getInterfaceName()+"Impl").newInstance();
         Method[] methods=Class.forName(context.getInterfaceName()).getMethods();
         for(Method method:methods){
             if(method.getName().equals(context.getMethodName())){
-              Object result = method.invoke(in,"zoa");
-                context.setResultJson(String.valueOf(result));
+              Object result = method.invoke(in,context.getParams());
+                context.setResult(result);
             }
         }
         ctx.writeAndFlush(context);

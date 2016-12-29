@@ -1,5 +1,12 @@
 package org.zdlearn.java.simple.zoa.domain;
 
+import org.zdlearn.java.simple.zoa.domain.api.HellowordApi;
+import org.zdlearn.java.simple.zoa.domain.consumer.ZOAClient;
+
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
+
 /**
  * <p>项目名称：ZOA</p>
  * <p>包名称：  org.zdlearn.java.simple.zoa.domain</p>
@@ -14,5 +21,30 @@ package org.zdlearn.java.simple.zoa.domain;
  * <p>@author wyzhangdong</p>
  * <p>@see</p>
  */
-public class RpcInvoker {
+public class RpcInvoker implements InvocationHandler {
+    public <T> T bindWithNoImplementation(Class<T> t) {
+        /**
+         * 因为传入参数t未实现，所以没有classLoader。所以不能用
+         * t.getClass().getClassLoader()。这个时候时候直接用默认的
+         * loader即可。
+         */
+        return (T) Proxy.newProxyInstance(
+                ClassLoader.getSystemClassLoader(), new Class[]{t}, this);
+    }
+
+    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+        //根据返回参数做特殊处理
+        System.out.println(method.getGenericReturnType());
+        ZOAContext context=new ZOAContext();
+        context.setInterfaceName(method.getDeclaringClass().getName());
+        context.setMethodName(method.getName());
+        context.setParams(args);
+        new ZOAClient("localhost",9500,context).run();
+        return null;
+    }
+
+    public static void main(String [] args){
+        HellowordApi api=new RpcInvoker().bindWithNoImplementation(HellowordApi.class);
+        api.helloWord("AAAA");
+    }
 }
