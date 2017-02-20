@@ -12,7 +12,7 @@ import io.netty.handler.codec.serialization.ObjectEncoder;
 
 
 /**
- * Created by wyzhangdong on 2016/12/23.
+ * Created by zhangdong147896325@163.com on 2016/12/23.
  */
 public class ObjectServer {
     private String host;

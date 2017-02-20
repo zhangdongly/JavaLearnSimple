@@ -5,7 +5,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
 /**
- * Created by wyzhangdong on 2016/12/5.
+ * Created by zhangdong147896325@163.com on 2016/12/5.
  * Java原生的代理
  */
 public class ZDProxy implements InvocationHandler {

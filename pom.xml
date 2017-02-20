@@ -12,6 +12,9 @@
     <properties>
         <testng_version>6.9.13.6</testng_version>
         <nettty_version>4.0.28.Final</nettty_version>
+        <log4j-over-slf4j>1.7.18</log4j-over-slf4j>
+        <jcl-over-slf4j-version>1.7.20</jcl-over-slf4j-version>
+        <mock-core-version>2.6.3</mock-core-version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -36,6 +39,21 @@
         <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>${jcl-over-slf4j-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>log4j-over-slf4j</artifactId>
+            <version>${log4j-over-slf4j}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>${mock-core-version}</version>
         </dependency>
     </dependencies>
 

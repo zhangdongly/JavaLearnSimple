@@ -9,10 +9,10 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.serialization.ClassResolvers;
 import io.netty.handler.codec.serialization.ObjectDecoder;
 import io.netty.handler.codec.serialization.ObjectEncoder;
-import org.zdlearn.java.simple.zoa.domain.consumer.ZOAClientHandler;
+
 
 /**
- * Created by wyzhangdong on 2016/12/23.
+ * Created by zhangdong147896325@163.com on 2016/12/23.
  */
 public class ObjectClient {
     private String host;

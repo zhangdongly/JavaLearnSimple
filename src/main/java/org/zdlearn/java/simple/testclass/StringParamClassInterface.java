@@ -1,7 +1,7 @@
 package org.zdlearn.java.simple.testclass;
 
 /**
- * Created by wyzhangdong on 2016/12/5.
+ * Created by zhangdong147896325@163.com on 2016/12/5.
  */
 public interface StringParamClassInterface {
     public String getStringResultWithNoParam();

@@ -5,7 +5,7 @@ import org.zdlearn.java.simple.testclass.StringParamClass;
 import org.zdlearn.java.simple.testclass.StringParamClassInterface;
 
 /**
- * Created by wyzhangdong on 2016/12/5.
+ * Created by zhangdong147896325@163.com on 2016/12/5.
  */
 public class ZDProxyTest {
     @Test

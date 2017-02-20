@@ -3,7 +3,7 @@ package org.zdlearn.java.simple.nettyrpc.pojo;
 import java.io.Serializable;
 
 /**
- * Created by wyzhangdong on 2016/12/9.
+ * Created by zhangdong147896325@163.com on 2016/12/9.
  */
 public class UserObject implements Serializable{
 
